@@ -13,42 +13,53 @@ You need to install:
 
 - Apache Server with PHP: 
 
-	sudo apt-get update
-	sudo apt-get upgrade
-	sudo apt-get install avahi-daemon apache2 php5
+```bash
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install avahi-daemon apache2 php5
+```
 
 - Enable camera kernel module:
 
-	sudo raspi-config
+```bash
+sudo raspi-config
+```
 
 Navigate to “camera” and select “enable”.
 
 ![enable_cam](http://www.raspberrypi.org/wp-content/uploads/2013/05/image-2.jpg)
  
 Camera device need 777 priviladge **( WARNING: this is dangerous )**
- 
-	sudo chmod 777 /dev/vchiq
 
+```bash 
+sudo chmod 777 /dev/vchiq
+```
 
 - Copy the PHP code in his own special folder
 
 Go to apache folder and link to the ```raspistillAPI/``` folder to copy the PHP code that is going to take and deliver the photo
 
-	cd /var/www
-	sudo ln -s /[your_dir_path]/raspistillAPI raspistillAPI
+```bash
+cd /var/www
+sudo ln -s /[your_dir_path]/raspistillAPI raspistillAPI
+```
 
 The folder where is store the images needs all (777) privileges **( WARNING: this is dangerous )**
 
-	sudo chown www-data /[your_dir_path]/raspistillAPI/
-	sudo chgrp www-data /[your_dir_path]/raspistillAPI/
-	
+```bash
+sudo chown www-data /[your_dir_path]/raspistillAPI/
+sudo chgrp www-data /[your_dir_path]/raspistillAPI/
+```
+
 After this copy the index.php in that folder.
 
 ## 2. Use
 
 Go to a navigator and type:
 
-	http://raspberrypi.local/raspistillAPI/?width=640&height=480
+```
+http://raspberrypi.local/raspistillAPI/?width=640&height=480
+```
 
 You should see a photo.
 If that's the case try compiling the OF project and be ready to ask for images on demand using ```raspistill``` API
